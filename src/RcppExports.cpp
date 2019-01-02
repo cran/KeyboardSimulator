@@ -5,6 +5,16 @@
 
 using namespace Rcpp;
 
+// get_cursor
+NumericVector get_cursor();
+RcppExport SEXP _KeyboardSimulator_get_cursor() {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    rcpp_result_gen = Rcpp::wrap(get_cursor());
+    return rcpp_result_gen;
+END_RCPP
+}
 // mouse_left_click
 void mouse_left_click();
 RcppExport SEXP _KeyboardSimulator_mouse_left_click() {
@@ -59,47 +69,66 @@ BEGIN_RCPP
     return R_NilValue;
 END_RCPP
 }
+// MouseMove
+void MouseMove(int x, int y);
+RcppExport SEXP _KeyboardSimulator_MouseMove(SEXP xSEXP, SEXP ySEXP) {
+BEGIN_RCPP
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type x(xSEXP);
+    Rcpp::traits::input_parameter< int >::type y(ySEXP);
+    MouseMove(x, y);
+    return R_NilValue;
+END_RCPP
+}
 // press_c
-void press_c(Rcpp::NumericVector x);
-RcppExport SEXP _KeyboardSimulator_press_c(SEXP xSEXP) {
+void press_c(Rcpp::NumericVector x, Rcpp::NumericVector s, Rcpp::LogicalVector p);
+RcppExport SEXP _KeyboardSimulator_press_c(SEXP xSEXP, SEXP sSEXP, SEXP pSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< Rcpp::NumericVector >::type x(xSEXP);
-    press_c(x);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type s(sSEXP);
+    Rcpp::traits::input_parameter< Rcpp::LogicalVector >::type p(pSEXP);
+    press_c(x, s, p);
     return R_NilValue;
 END_RCPP
 }
 // press_and_release_c
-void press_and_release_c(Rcpp::NumericVector x);
-RcppExport SEXP _KeyboardSimulator_press_and_release_c(SEXP xSEXP) {
+void press_and_release_c(Rcpp::NumericVector x, Rcpp::NumericVector s, Rcpp::LogicalVector p);
+RcppExport SEXP _KeyboardSimulator_press_and_release_c(SEXP xSEXP, SEXP sSEXP, SEXP pSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< Rcpp::NumericVector >::type x(xSEXP);
-    press_and_release_c(x);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type s(sSEXP);
+    Rcpp::traits::input_parameter< Rcpp::LogicalVector >::type p(pSEXP);
+    press_and_release_c(x, s, p);
     return R_NilValue;
 END_RCPP
 }
 // release_c
-void release_c(Rcpp::NumericVector x);
-RcppExport SEXP _KeyboardSimulator_release_c(SEXP xSEXP) {
+void release_c(Rcpp::NumericVector x, Rcpp::NumericVector s, Rcpp::LogicalVector p);
+RcppExport SEXP _KeyboardSimulator_release_c(SEXP xSEXP, SEXP sSEXP, SEXP pSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< Rcpp::NumericVector >::type x(xSEXP);
-    release_c(x);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type s(sSEXP);
+    Rcpp::traits::input_parameter< Rcpp::LogicalVector >::type p(pSEXP);
+    release_c(x, s, p);
     return R_NilValue;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_KeyboardSimulator_get_cursor", (DL_FUNC) &_KeyboardSimulator_get_cursor, 0},
     {"_KeyboardSimulator_mouse_left_click", (DL_FUNC) &_KeyboardSimulator_mouse_left_click, 0},
     {"_KeyboardSimulator_mouse_left_hold", (DL_FUNC) &_KeyboardSimulator_mouse_left_hold, 0},
     {"_KeyboardSimulator_mouse_left_release", (DL_FUNC) &_KeyboardSimulator_mouse_left_release, 0},
     {"_KeyboardSimulator_mouse_right_click", (DL_FUNC) &_KeyboardSimulator_mouse_right_click, 0},
     {"_KeyboardSimulator_mouse_right_hold", (DL_FUNC) &_KeyboardSimulator_mouse_right_hold, 0},
     {"_KeyboardSimulator_mouse_right_release", (DL_FUNC) &_KeyboardSimulator_mouse_right_release, 0},
-    {"_KeyboardSimulator_press_c", (DL_FUNC) &_KeyboardSimulator_press_c, 1},
-    {"_KeyboardSimulator_press_and_release_c", (DL_FUNC) &_KeyboardSimulator_press_and_release_c, 1},
-    {"_KeyboardSimulator_release_c", (DL_FUNC) &_KeyboardSimulator_release_c, 1},
+    {"_KeyboardSimulator_MouseMove", (DL_FUNC) &_KeyboardSimulator_MouseMove, 2},
+    {"_KeyboardSimulator_press_c", (DL_FUNC) &_KeyboardSimulator_press_c, 3},
+    {"_KeyboardSimulator_press_and_release_c", (DL_FUNC) &_KeyboardSimulator_press_and_release_c, 3},
+    {"_KeyboardSimulator_release_c", (DL_FUNC) &_KeyboardSimulator_release_c, 3},
     {NULL, NULL, 0}
 };
 
