@@ -1,6 +1,9 @@
 # **Intorduction to KeyboardSimulator**
 
-`KeyboardSimulator` is a R package that make users simulate keyboard event, cursor movement and mouse click with simple R function.
+![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/KeyboardSimulator)
+![CRAN\_Status\_Badge](https://cranlogs.r-pkg.org/badges/grand-total/KeyboardSimulator)
+
+`KeyboardSimulator` is a package for R language that make users simulate keyboard event, cursor movement and mouse click with simple R function.
 
 This package provide 6 functions which are developed in C++:
 
@@ -91,6 +94,12 @@ mouse.click("right")
 
 ```r
 mouse.move(960, 540)
+```
+
+* **Move cursor to the center of screen on 1080FHD monitor within 3 seconds**
+
+```r
+mouse.move(960, 540, duration=3)
 ```
 
 * **Drag an item to center of screen**
